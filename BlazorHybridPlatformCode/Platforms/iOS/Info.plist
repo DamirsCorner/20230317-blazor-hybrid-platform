@@ -28,5 +28,7 @@
     </array>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/appicon.appiconset</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Shows current coordinates to the user.</string>
 </dict>
 </plist>

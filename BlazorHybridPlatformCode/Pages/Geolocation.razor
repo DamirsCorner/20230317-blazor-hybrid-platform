@@ -1,0 +1,33 @@
+﻿@page "/geolocation"
+
+<PageTitle>Weather forecast</PageTitle>
+
+<h1>Geolocation</h1>
+
+
+@if (geolocation == null)
+{
+    <p>Geolocation not available</p>
+}
+else
+{
+    <p>Lat: @geolocation.Latitude Long: @geolocation.Longitude </p>
+}
+
+@code {
+    private Location geolocation;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+
+            geolocation = await Microsoft.Maui.Devices.Sensors.Geolocation.Default.GetLocationAsync(request);
+        }
+        catch
+        { }
+
+        await base.OnInitializedAsync();
+    }
+}
